@@ -16,20 +16,20 @@
 # (default value is `0x0601` and can be changed per target or globally)
 #
 # Example usage:
+# ```
+#   find_package(WDK REQUIRED)
 #
-# find_package(WDK REQUIRED)
+#   wdk_add_library(KmdfCppLib STATIC KMDF 1.15
+#       KmdfCppLib.h
+#       KmdfCppLib.cpp
+#       )
+#   target_include_directories(KmdfCppLib INTERFACE .)
 #
-# wdk_add_library(KmdfCppLib STATIC KMDF 1.15
-# KmdfCppLib.h
-# KmdfCppLib.cpp
-# )
-# target_include_directories(KmdfCppLib INTERFACE .)
-#
-# wdk_add_driver(KmdfCppDriver KMDF 1.15
-# Main.cpp
-# )
-# target_link_libraries(KmdfCppDriver KmdfCppLib)
-#
+#   wdk_add_driver(KmdfCppDriver KMDF 1.15
+#       Main.cpp
+#       )
+#   target_link_libraries(KmdfCppDriver KmdfCppLib)
+# ```
 cmake_minimum_required(VERSION 3.20)
 
 if(DEFINED ENV{WDKContentRoot})
